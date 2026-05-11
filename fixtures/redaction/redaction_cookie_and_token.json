@@ -1,0 +1,18 @@
+{
+  "fixture_id": "redaction_cookie_and_token",
+  "description": "Cookie and token fields must be masked.",
+  "input": {
+    "headers": {
+      "Cookie": "sessionid=session_value_987654321",
+      "X-Api-Key": "xkey_live_token_abc999"
+    },
+    "log_line": "token=session_value_987654321 x-api-key=xkey_live_token_abc999"
+  },
+  "expected_absent": [
+    "session_value_987654321",
+    "xkey_live_token_abc999"
+  ],
+  "expected_present": [
+    "[REDACTED]"
+  ]
+}

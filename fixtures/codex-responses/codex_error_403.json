@@ -1,0 +1,12 @@
+{
+  "fixture_id": "codex_error_403",
+  "category": "error_403",
+  "description": "Permission denied fixture.",
+  "response": {
+    "error": {
+      "http_status": 403,
+      "code": "forbidden",
+      "message": "Access denied for this model."
+    }
+  }
+}

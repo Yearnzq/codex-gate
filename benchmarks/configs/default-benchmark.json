@@ -1,0 +1,26 @@
+{
+  "id": "default-benchmark",
+  "description": "Placeholder benchmark contract. Replace with project-specific cases before using perf gates.",
+  "metrics": [
+    {
+      "name": "p95_latency_ms",
+      "direction": "lower_is_better",
+      "required": false
+    },
+    {
+      "name": "throughput_items_per_sec",
+      "direction": "higher_is_better",
+      "required": false
+    },
+    {
+      "name": "peak_memory_mb",
+      "direction": "lower_is_better",
+      "required": false
+    }
+  ],
+  "gates": {
+    "correctness_required": true,
+    "max_accuracy_drop_percent": 0.0,
+    "min_latency_improvement_percent": 0.0
+  }
+}

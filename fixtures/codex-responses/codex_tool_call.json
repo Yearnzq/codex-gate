@@ -1,0 +1,19 @@
+{
+  "fixture_id": "codex_tool_call",
+  "category": "tool_call",
+  "description": "Model asks caller to execute an external tool.",
+  "response": {
+    "id": "resp_tool_01",
+    "status": "requires_action",
+    "output": [
+      {
+        "type": "tool_call",
+        "id": "call_001",
+        "name": "get_build_status",
+        "arguments": {
+          "sha": "abc123"
+        }
+      }
+    ]
+  }
+}

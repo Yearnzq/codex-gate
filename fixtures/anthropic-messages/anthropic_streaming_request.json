@@ -1,0 +1,21 @@
+{
+  "fixture_id": "anthropic_streaming_request",
+  "category": "streaming_request",
+  "description": "Streaming flag enabled for SSE-style response path.",
+  "request": {
+    "model": "claude-sonnet-4-5",
+    "messages": [
+      {
+        "role": "user",
+        "content": [
+          {
+            "type": "text",
+            "text": "Stream the answer token by token."
+          }
+        ]
+      }
+    ],
+    "max_tokens": 200,
+    "stream": true
+  }
+}

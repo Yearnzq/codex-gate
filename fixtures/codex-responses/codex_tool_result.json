@@ -1,0 +1,16 @@
+{
+  "fixture_id": "codex_tool_result",
+  "category": "tool_result",
+  "description": "Follow-up response includes result from an earlier tool call.",
+  "response": {
+    "id": "resp_tool_02",
+    "status": "completed",
+    "output": [
+      {
+        "type": "tool_result",
+        "tool_call_id": "call_001",
+        "content": "status=success"
+      }
+    ]
+  }
+}

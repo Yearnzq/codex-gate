@@ -1,0 +1,30 @@
+{
+  "fixture_id": "codex_stream_text_then_tool_call",
+  "category": "streamed_deltas",
+  "description": "Text delta followed by tool call to verify text block closes before tool block starts.",
+  "response": {
+    "stream": [
+      {
+        "event": "response.started",
+        "response_id": "resp_stream_text_tool_01"
+      },
+      {
+        "event": "response.output_text.delta",
+        "delta": "Need tool lookup."
+      },
+      {
+        "event": "response.tool_call",
+        "id": "call_stream_mix_001",
+        "name": "get_build_status",
+        "arguments": {
+          "sha": "abc123"
+        }
+      },
+      {
+        "event": "response.completed",
+        "response_id": "resp_stream_text_tool_01"
+      }
+    ],
+    "final_status": "completed"
+  }
+}

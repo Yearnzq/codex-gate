@@ -1,0 +1,35 @@
+{
+  "fixture_id": "anthropic_with_tool_result",
+  "category": "tool_results",
+  "description": "Conversation includes assistant tool_use followed by user tool_result.",
+  "request": {
+    "model": "claude-sonnet-4-5",
+    "messages": [
+      {
+        "role": "assistant",
+        "content": [
+          {
+            "type": "tool_use",
+            "id": "toolu_001",
+            "name": "read_metric",
+            "input": {
+              "metric": "latency_p95"
+            }
+          }
+        ]
+      },
+      {
+        "role": "user",
+        "content": [
+          {
+            "type": "tool_result",
+            "tool_use_id": "toolu_001",
+            "content": "latency_p95=142ms"
+          }
+        ]
+      }
+    ],
+    "max_tokens": 256,
+    "stream": false
+  }
+}

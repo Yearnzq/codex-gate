@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Anthropic Message Fixture (shape contract)",
+  "type": "object",
+  "required": [
+    "fixture_id",
+    "category",
+    "description",
+    "request"
+  ],
+  "properties": {
+    "fixture_id": {
+      "type": "string"
+    },
+    "category": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "request": {
+      "type": "object"
+    }
+  },
+  "additionalProperties": true
+}

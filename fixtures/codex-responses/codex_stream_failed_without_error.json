@@ -1,0 +1,18 @@
+{
+  "fixture_id": "codex_stream_failed_without_error",
+  "category": "partial_stream_failure",
+  "description": "Stream fails by final status only without an explicit response.error event.",
+  "response": {
+    "stream": [
+      {
+        "event": "response.started",
+        "response_id": "resp_stream_fail_no_error_01"
+      },
+      {
+        "event": "response.output_text.delta",
+        "delta": "partial content"
+      }
+    ],
+    "final_status": "failed"
+  }
+}

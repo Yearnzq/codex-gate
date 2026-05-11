@@ -1,0 +1,21 @@
+{
+  "fixture_id": "anthropic_max_tokens_limit",
+  "category": "max_tokens",
+  "description": "Request focuses on max_tokens boundary input.",
+  "request": {
+    "model": "claude-sonnet-4-5",
+    "messages": [
+      {
+        "role": "user",
+        "content": [
+          {
+            "type": "text",
+            "text": "Return a long numbered checklist."
+          }
+        ]
+      }
+    ],
+    "max_tokens": 4096,
+    "stream": false
+  }
+}

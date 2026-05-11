@@ -1,0 +1,18 @@
+{
+  "required": [
+    "secret_scan",
+    "config_parse",
+    "skill_schema",
+    "task_profile_parse"
+  ],
+  "projectSpecific": {
+    "tests": "scripts/run_tests.ps1",
+    "benchmarks": "scripts/run_bench.ps1"
+  },
+  "cannotPassBy": [
+    "disabling_tests",
+    "loosening_gates",
+    "removing_benchmarks",
+    "hiding_failed_candidates"
+  ]
+}

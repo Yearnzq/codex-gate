@@ -1,0 +1,23 @@
+{
+  "fixture_id": "codex_stream_tool_result",
+  "category": "streamed_deltas",
+  "description": "Synthetic stream emits a tool result block before completion.",
+  "response": {
+    "stream": [
+      {
+        "event": "response.started",
+        "response_id": "resp_stream_tool_result_01"
+      },
+      {
+        "event": "response.tool_result",
+        "tool_call_id": "call_stream_001",
+        "content": "status=success"
+      },
+      {
+        "event": "response.completed",
+        "response_id": "resp_stream_tool_result_01"
+      }
+    ],
+    "final_status": "completed"
+  }
+}

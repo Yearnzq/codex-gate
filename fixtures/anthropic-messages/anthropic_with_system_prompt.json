@@ -1,0 +1,22 @@
+{
+  "fixture_id": "anthropic_with_system_prompt",
+  "category": "system_prompt",
+  "description": "Request includes a system prompt and one user message.",
+  "request": {
+    "model": "claude-sonnet-4-5",
+    "system": "You are a strict test assistant.",
+    "messages": [
+      {
+        "role": "user",
+        "content": [
+          {
+            "type": "text",
+            "text": "Respond using exactly five words."
+          }
+        ]
+      }
+    ],
+    "max_tokens": 64,
+    "stream": false
+  }
+}

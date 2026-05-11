@@ -1,0 +1,29 @@
+{
+  "fixture_id": "anthropic_multimodal_placeholder",
+  "category": "multimodal_placeholder",
+  "description": "Synthetic image placeholder without real media data.",
+  "request": {
+    "model": "claude-sonnet-4-5",
+    "messages": [
+      {
+        "role": "user",
+        "content": [
+          {
+            "type": "image",
+            "source": {
+              "type": "base64",
+              "media_type": "image/png",
+              "data": "<synthetic-base64-placeholder>"
+            }
+          },
+          {
+            "type": "text",
+            "text": "Describe the mock diagram."
+          }
+        ]
+      }
+    ],
+    "max_tokens": 300,
+    "stream": false
+  }
+}

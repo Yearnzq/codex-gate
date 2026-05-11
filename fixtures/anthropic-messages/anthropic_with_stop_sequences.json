@@ -1,0 +1,25 @@
+{
+  "fixture_id": "anthropic_with_stop_sequences",
+  "category": "stop_sequences",
+  "description": "Request includes explicit stop_sequences.",
+  "request": {
+    "model": "claude-sonnet-4-5",
+    "messages": [
+      {
+        "role": "user",
+        "content": [
+          {
+            "type": "text",
+            "text": "Generate sections with END_SECTION markers."
+          }
+        ]
+      }
+    ],
+    "max_tokens": 512,
+    "stop_sequences": [
+      "END_SECTION",
+      "END_OUTPUT"
+    ],
+    "stream": false
+  }
+}

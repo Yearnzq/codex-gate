@@ -1,0 +1,12 @@
+{
+  "fixture_id": "codex_timeout",
+  "category": "timeout",
+  "description": "Gateway timeout classification fixture.",
+  "response": {
+    "error": {
+      "http_status": 504,
+      "code": "timeout",
+      "message": "Upstream request timed out."
+    }
+  }
+}

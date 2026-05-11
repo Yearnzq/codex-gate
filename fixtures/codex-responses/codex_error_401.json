@@ -1,0 +1,12 @@
+{
+  "fixture_id": "codex_error_401",
+  "category": "error_401",
+  "description": "Authentication failure fixture.",
+  "response": {
+    "error": {
+      "http_status": 401,
+      "code": "unauthorized",
+      "message": "Authentication required."
+    }
+  }
+}

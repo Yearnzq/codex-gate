@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Redaction Fixture (shape contract)",
+  "type": "object",
+  "required": [
+    "fixture_id",
+    "description",
+    "input",
+    "expected_absent",
+    "expected_present"
+  ],
+  "properties": {
+    "fixture_id": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "input": {
+      "type": "object"
+    },
+    "expected_absent": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "expected_present": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "additionalProperties": true
+}

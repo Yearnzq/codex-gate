@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Codex Response Fixture (shape contract)",
+  "type": "object",
+  "required": [
+    "fixture_id",
+    "category",
+    "description",
+    "response"
+  ],
+  "properties": {
+    "fixture_id": {
+      "type": "string"
+    },
+    "category": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "response": {
+      "type": "object"
+    }
+  },
+  "additionalProperties": true
+}

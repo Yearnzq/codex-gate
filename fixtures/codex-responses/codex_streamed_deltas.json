@@ -1,0 +1,26 @@
+{
+  "fixture_id": "codex_streamed_deltas",
+  "category": "streamed_deltas",
+  "description": "Synthetic stream event sequence ending in completed status.",
+  "response": {
+    "stream": [
+      {
+        "event": "response.started",
+        "response_id": "resp_stream_01"
+      },
+      {
+        "event": "response.output_text.delta",
+        "delta": "Hello"
+      },
+      {
+        "event": "response.output_text.delta",
+        "delta": " world"
+      },
+      {
+        "event": "response.completed",
+        "response_id": "resp_stream_01"
+      }
+    ],
+    "final_status": "completed"
+  }
+}

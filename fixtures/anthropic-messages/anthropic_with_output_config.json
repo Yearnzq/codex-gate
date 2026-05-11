@@ -1,0 +1,36 @@
+{
+  "fixture_id": "anthropic_with_output_config",
+  "category": "output_config",
+  "description": "Claude Code compatibility hints may include output_config and reasoning fields that must not be forwarded blindly to OpenAI Responses.",
+  "request": {
+    "model": "claude-sonnet-4-5",
+    "messages": [
+      {
+        "role": "user",
+        "content": [
+          {
+            "type": "text",
+            "text": "Return a short status."
+          }
+        ]
+      }
+    ],
+    "max_tokens": 128,
+    "stream": false,
+    "metadata": {
+      "client": "claude-code"
+    },
+    "context_management": {
+      "edits": {}
+    },
+    "output_config": {
+      "format": "text"
+    },
+    "thinking": {
+      "type": "disabled"
+    },
+    "reasoning": {
+      "effort": "medium"
+    }
+  }
+}

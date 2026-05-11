@@ -1,0 +1,56 @@
+{
+  "fixture_id": "anthropic_with_empty_text_history",
+  "category": "empty_text",
+  "description": "Claude Code history can contain empty text blocks around tool calls; gateway should drop empty text rather than sending invalid empty content.",
+  "request": {
+    "model": "claude-sonnet-4-5",
+    "messages": [
+      {
+        "role": "user",
+        "content": [
+          {
+            "type": "text",
+            "text": "Start."
+          }
+        ]
+      },
+      {
+        "role": "assistant",
+        "content": [
+          {
+            "type": "text",
+            "text": " "
+          },
+          {
+            "type": "tool_use",
+            "id": "toolu_empty_001",
+            "name": "Read",
+            "input": {
+              "file_path": "README.md"
+            }
+          }
+        ]
+      },
+      {
+        "role": "user",
+        "content": [
+          {
+            "type": "text",
+            "text": ""
+          }
+        ]
+      },
+      {
+        "role": "user",
+        "content": [
+          {
+            "type": "text",
+            "text": "Continue."
+          }
+        ]
+      }
+    ],
+    "max_tokens": 128,
+    "stream": false
+  }
+}

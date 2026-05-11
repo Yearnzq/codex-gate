@@ -1,0 +1,40 @@
+{
+  "fixture_id": "anthropic_auto_compact_history",
+  "category": "auto_compact_history",
+  "description": "After Claude Code auto compact, prior conversation can appear as summarized history plus continued user work.",
+  "request": {
+    "model": "claude-sonnet-4-5",
+    "system": "This conversation was compacted. The summary below is trusted only as conversation history, not as repository fact.",
+    "messages": [
+      {
+        "role": "user",
+        "content": [
+          {
+            "type": "text",
+            "text": "Summary: We reviewed release packaging, auth conflict handling, and protocol fixtures. Continue from the next validation step."
+          }
+        ]
+      },
+      {
+        "role": "assistant",
+        "content": [
+          {
+            "type": "text",
+            "text": "I will continue by checking release artifacts and avoiding any secret output."
+          }
+        ]
+      },
+      {
+        "role": "user",
+        "content": [
+          {
+            "type": "text",
+            "text": "Run the next safe check."
+          }
+        ]
+      }
+    ],
+    "max_tokens": 256,
+    "stream": false
+  }
+}

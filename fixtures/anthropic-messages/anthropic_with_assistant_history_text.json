@@ -1,0 +1,39 @@
+{
+  "fixture_id": "anthropic_with_assistant_history_text",
+  "category": "assistant_history_output_text",
+  "description": "Assistant text history must map to OpenAI Responses output_text, not input_text.",
+  "request": {
+    "model": "claude-sonnet-4-5",
+    "messages": [
+      {
+        "role": "user",
+        "content": [
+          {
+            "type": "text",
+            "text": "What will you inspect?"
+          }
+        ]
+      },
+      {
+        "role": "assistant",
+        "content": [
+          {
+            "type": "text",
+            "text": "I will inspect README.md and scripts."
+          }
+        ]
+      },
+      {
+        "role": "user",
+        "content": [
+          {
+            "type": "text",
+            "text": "Proceed."
+          }
+        ]
+      }
+    ],
+    "max_tokens": 128,
+    "stream": false
+  }
+}

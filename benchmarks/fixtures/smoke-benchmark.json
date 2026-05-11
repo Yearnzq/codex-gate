@@ -1,0 +1,12 @@
+{
+  "title": "Benchmark Smoke Fixture",
+  "gate": "pass",
+  "metrics": {
+    "p95_latency_ms": 42.1,
+    "throughput_items_per_sec": 120.0,
+    "peak_memory_mb": 128.5
+  },
+  "environment": "synthetic-public-fixture",
+  "notes": "Synthetic benchmark artifact for CI smoke checks.",
+  "synthetic": true
+}

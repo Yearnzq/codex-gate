@@ -1,0 +1,23 @@
+{
+  "fixture_id": "anthropic_invalid_field",
+  "category": "invalid_field",
+  "description": "Intentional invalid field for request validation behavior.",
+  "request": {
+    "model": "claude-sonnet-4-5",
+    "messages": [
+      {
+        "role": "user",
+        "content": [
+          {
+            "type": "text",
+            "text": "This payload includes invalid fields."
+          }
+        ]
+      }
+    ],
+    "max_tokens": 128,
+    "unsupported_field": "should-fail-validation",
+    "stream": false
+  },
+  "expected_validation_error": "unsupported_field"
+}

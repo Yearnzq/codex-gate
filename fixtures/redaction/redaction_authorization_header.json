@@ -1,0 +1,17 @@
+{
+  "fixture_id": "redaction_authorization_header",
+  "description": "Authorization bearer token must not survive in logs.",
+  "input": {
+    "headers": {
+      "Authorization": "Bearer demo_token_value_123456",
+      "X-Request-Id": "req-1"
+    },
+    "log_line": "sending Authorization=Bearer demo_token_value_123456 for request req-1"
+  },
+  "expected_absent": [
+    "demo_token_value_123456"
+  ],
+  "expected_present": [
+    "[REDACTED]"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "fixture_id": "codex_refusal",
+  "category": "refusal",
+  "description": "Model declines unsafe request.",
+  "response": {
+    "id": "resp_refuse_01",
+    "status": "completed",
+    "output": [
+      {
+        "type": "refusal",
+        "reason": "policy_violation",
+        "message": "I cannot help with that request."
+      }
+    ]
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "fixture_id": "codex_normal_completion",
+  "category": "normal_completion",
+  "description": "Completed response with one assistant output text item.",
+  "response": {
+    "id": "resp_001",
+    "status": "completed",
+    "output": [
+      {
+        "type": "message",
+        "role": "assistant",
+        "content": [
+          {
+            "type": "output_text",
+            "text": "Project goal: codex-only auditable proxy harness."
+          }
+        ]
+      }
+    ]
+  }
+}

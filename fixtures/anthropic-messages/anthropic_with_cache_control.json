@@ -1,0 +1,62 @@
+{
+  "fixture_id": "anthropic_with_cache_control",
+  "category": "cache_control",
+  "description": "Claude Code may send ephemeral cache_control metadata on system, text, tool_use, and tool_result blocks.",
+  "request": {
+    "model": "claude-sonnet-4-5",
+    "system": [
+      {
+        "type": "text",
+        "text": "Follow project instructions.",
+        "cache_control": {
+          "type": "ephemeral"
+        }
+      }
+    ],
+    "messages": [
+      {
+        "role": "user",
+        "content": [
+          {
+            "type": "text",
+            "text": "Inspect the repository.",
+            "cache_control": {
+              "type": "ephemeral"
+            }
+          }
+        ]
+      },
+      {
+        "role": "assistant",
+        "content": [
+          {
+            "type": "tool_use",
+            "id": "toolu_cache_001",
+            "name": "Read",
+            "input": {
+              "file_path": "README.md"
+            },
+            "cache_control": {
+              "type": "ephemeral"
+            }
+          }
+        ]
+      },
+      {
+        "role": "user",
+        "content": [
+          {
+            "type": "tool_result",
+            "tool_use_id": "toolu_cache_001",
+            "content": "README content omitted",
+            "cache_control": {
+              "type": "ephemeral"
+            }
+          }
+        ]
+      }
+    ],
+    "max_tokens": 256,
+    "stream": false
+  }
+}

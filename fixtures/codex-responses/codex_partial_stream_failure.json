@@ -1,0 +1,23 @@
+{
+  "fixture_id": "codex_partial_stream_failure",
+  "category": "partial_stream_failure",
+  "description": "Stream emits partial text then fails with an error event.",
+  "response": {
+    "stream": [
+      {
+        "event": "response.started",
+        "response_id": "resp_stream_fail_01"
+      },
+      {
+        "event": "response.output_text.delta",
+        "delta": "partial answer"
+      },
+      {
+        "event": "response.error",
+        "code": "stream_interrupted",
+        "message": "Connection dropped before completion."
+      }
+    ],
+    "final_status": "failed"
+  }
+}

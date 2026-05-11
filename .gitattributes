@@ -1,0 +1,32 @@
+# Repository line endings
+* text=auto eol=lf
+*.sh text eol=lf
+*.ps1 text eol=lf
+*.go text eol=lf
+*.py text eol=lf
+*.md text eol=lf
+*.json text eol=lf
+*.toml text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+
+# Release archive exclusions
+.git* export-ignore
+.github/ export-ignore
+.codex/local/ export-ignore
+reports/ export-ignore
+__pycache__/ export-ignore
+node_modules/ export-ignore
+dist/ export-ignore
+build/ export-ignore
+tmp/ export-ignore
+.idea/ export-ignore
+.vscode/ export-ignore
+.env export-ignore
+.env.* export-ignore
+*.pem export-ignore
+*.key export-ignore
+*.p12 export-ignore
+*.pfx export-ignore
+id_rsa export-ignore
+id_ed25519 export-ignore

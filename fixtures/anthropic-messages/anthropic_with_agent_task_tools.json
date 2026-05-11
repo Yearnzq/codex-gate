@@ -1,0 +1,59 @@
+{
+  "fixture_id": "anthropic_with_agent_task_tools",
+  "category": "agent_task_tools",
+  "description": "Claude Code can expose Agent and Task tool schemas; gateway should not reject them solely by name.",
+  "request": {
+    "model": "claude-sonnet-4-5",
+    "messages": [
+      {
+        "role": "user",
+        "content": [
+          {
+            "type": "text",
+            "text": "Plan a code review."
+          }
+        ]
+      }
+    ],
+    "tools": [
+      {
+        "name": "Agent",
+        "description": "Launch a Claude Code subagent for bounded analysis.",
+        "input_schema": {
+          "type": "object",
+          "properties": {
+            "prompt": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "prompt"
+          ],
+          "additionalProperties": false
+        }
+      },
+      {
+        "name": "Task",
+        "description": "Run a delegated Claude Code task.",
+        "input_schema": {
+          "type": "object",
+          "properties": {
+            "description": {
+              "type": "string"
+            },
+            "prompt": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "description",
+            "prompt"
+          ],
+          "additionalProperties": false
+        }
+      }
+    ],
+    "max_tokens": 256,
+    "stream": false
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "fixture_id": "codex_error_429",
+  "category": "error_429",
+  "description": "Rate limit fixture.",
+  "response": {
+    "error": {
+      "http_status": 429,
+      "code": "rate_limited",
+      "message": "Too many requests.",
+      "retry_after_seconds": 20
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "fixture_id": "redaction_api_key_in_payload",
+  "description": "API key-style key/value pairs must be redacted from log text.",
+  "input": {
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "log_line": "payload api_key=internal_demo_key_abcdef123456 password:super-secret-pass"
+  },
+  "expected_absent": [
+    "internal_demo_key_abcdef123456",
+    "super-secret-pass"
+  ],
+  "expected_present": [
+    "api_key=[REDACTED]",
+    "password:[REDACTED]"
+  ]
+}

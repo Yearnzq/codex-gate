@@ -1,0 +1,131 @@
+name: harness-validate
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+
+      - name: Validate harness
+        run: python3 scripts/validate.py
+
+      - name: Validate protocol fixtures
+        run: python3 scripts/test_protocol_fixtures.py
+
+      - name: Run Python regression tests
+        run: |
+          python3 scripts/test_doctor.py
+          python3 scripts/test_phase2_review_fixes.py
+          python3 scripts/test_phase9_review_fixes.py
+          python3 scripts/test_token_command_installer.py
+
+      - name: Run benchmark smoke
+        run: |
+          python3 scripts/benchmark_smoke.py \
+            --config benchmarks/configs/default-benchmark.json \
+            --fixture benchmarks/fixtures/smoke-benchmark.json \
+            --output dist/benchmark-smoke/smoke-report.md
+
+      - name: Run Go tests
+        run: go test ./...
+
+      - name: Build current-platform gateway
+        run: scripts/build_gateway.sh
+
+      - name: Package and inspect release
+        run: |
+          python3 scripts/package_release.py --kind dev --output dist/release/codex-gate-local.zip
+          python3 scripts/inspect_release_archive.py --kind dev --archive dist/release/codex-gate-local.zip
+
+  release-binaries:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - goos: linux
+            goarch: amd64
+            target: linux-amd64
+            binary: gateway
+          - goos: linux
+            goarch: arm64
+            target: linux-arm64
+            binary: gateway
+          - goos: windows
+            goarch: amd64
+            target: windows-amd64
+            binary: gateway.exe
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+
+      - name: Build gateway binary
+        env:
+          CGO_ENABLED: "0"
+          GOOS: ${{ matrix.goos }}
+          GOARCH: ${{ matrix.goarch }}
+        run: scripts/build_gateway.sh
+
+      - name: Upload gateway binary
+        uses: actions/upload-artifact@v4
+        with:
+          name: gateway-${{ matrix.target }}
+          path: dist/gateway/${{ matrix.target }}/${{ matrix.binary }}
+          if-no-files-found: error
+
+  release-package:
+    runs-on: ubuntu-latest
+    needs:
+      - validate
+      - release-binaries
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Download gateway artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: downloaded-gateway
+
+      - name: Place gateway binaries
+        run: |
+          mkdir -p dist/gateway/linux-amd64 dist/gateway/linux-arm64 dist/gateway/windows-amd64
+          cp downloaded-gateway/gateway-linux-amd64/gateway dist/gateway/linux-amd64/gateway
+          cp downloaded-gateway/gateway-linux-arm64/gateway dist/gateway/linux-arm64/gateway
+          cp downloaded-gateway/gateway-windows-amd64/gateway.exe dist/gateway/windows-amd64/gateway.exe
+          chmod +x dist/gateway/linux-amd64/gateway dist/gateway/linux-arm64/gateway dist/gateway/windows-amd64/gateway.exe
+
+      - name: Package and inspect cross-platform releases
+        run: |
+          python3 scripts/package_release.py --kind runtime --output dist/release/codex-gate-runtime.zip
+          python3 scripts/inspect_release_archive.py --kind runtime --archive dist/release/codex-gate-runtime.zip
+          python3 scripts/package_release.py --kind dev --output dist/release/codex-gate-dev.zip
+          python3 scripts/inspect_release_archive.py --kind dev --archive dist/release/codex-gate-dev.zip
+
+      - name: Upload release archives
+        uses: actions/upload-artifact@v4
+        with:
+          name: codex-gate-release-packages
+          path: |
+            dist/release/codex-gate-runtime.zip
+            dist/release/codex-gate-dev.zip
+          if-no-files-found: error

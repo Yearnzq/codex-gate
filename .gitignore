@@ -1,0 +1,36 @@
+# Local secrets and credentials
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+id_rsa
+id_ed25519
+
+# Agent/runtime local state
+.codex/local/
+reports/**/local-*
+
+# Dependencies and generated output
+node_modules/
+__pycache__/
+*.pyc
+dist/
+build/
+.coverage
+coverage/
+
+# Go build/test output
+*.exe
+*.test
+*.out
+bin/
+tmp/
+
+# OS/editor noise
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

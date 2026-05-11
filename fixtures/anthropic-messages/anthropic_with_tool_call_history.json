@@ -1,0 +1,44 @@
+{
+  "fixture_id": "anthropic_with_tool_call_history",
+  "category": "tool_call_history",
+  "description": "Claude Code native tool loop sends assistant tool_use history followed by user tool_result history.",
+  "request": {
+    "model": "claude-sonnet-4-5",
+    "messages": [
+      {
+        "role": "assistant",
+        "content": [
+          {
+            "type": "tool_use",
+            "id": "toolu_history_001",
+            "name": "Bash",
+            "input": {
+              "command": "python scripts/validate.py"
+            }
+          }
+        ]
+      },
+      {
+        "role": "user",
+        "content": [
+          {
+            "type": "tool_result",
+            "tool_use_id": "toolu_history_001",
+            "content": "OK: harness scaffold validated"
+          }
+        ]
+      },
+      {
+        "role": "user",
+        "content": [
+          {
+            "type": "text",
+            "text": "Summarize the validation result."
+          }
+        ]
+      }
+    ],
+    "max_tokens": 256,
+    "stream": false
+  }
+}

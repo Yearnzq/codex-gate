@@ -1,0 +1,26 @@
+{
+  "fixture_id": "codex_stream_tool_use",
+  "category": "streamed_deltas",
+  "description": "Synthetic stream emits a tool call block before completion.",
+  "response": {
+    "stream": [
+      {
+        "event": "response.started",
+        "response_id": "resp_stream_tool_use_01"
+      },
+      {
+        "event": "response.tool_call",
+        "id": "call_stream_001",
+        "name": "get_build_status",
+        "arguments": {
+          "sha": "abc123"
+        }
+      },
+      {
+        "event": "response.completed",
+        "response_id": "resp_stream_tool_use_01"
+      }
+    ],
+    "final_status": "completed"
+  }
+}
